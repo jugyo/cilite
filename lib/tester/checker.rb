@@ -8,6 +8,7 @@ module Tester
     end
 
     def if_updated(&block)
+      update
       hash = head
       if KVS['HEAD'] != hash
         block.call(hash)
