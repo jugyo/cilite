@@ -5,7 +5,6 @@ module Tester
     set :views,  "#{dir}/views"
     set :public, "#{dir}/public"
     set :static, true
-    set :lock, true
 
     get '/' do
       @logs = Log.logs[0..10].map {|key| Log[key]}
