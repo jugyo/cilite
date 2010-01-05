@@ -7,7 +7,7 @@ module Tester
     set :static, true
 
     get '/' do
-      @logs = Log.logs[0..10].map {|key| Log[key]}
+      @logs = Log.logs.reverse[0..10].map {|key| Log[key]}
       haml :index
     end
 
