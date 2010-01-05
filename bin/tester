@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.dirname(__FILE__) + "/../lib")
+
+require 'rubygems'
+require 'tester'
+require 'choice'
+
+Choice.options do
+  banner "Usage: #{File.basename(__FILE__)} [-hpv] path_to_git_repo"
+  header ''
+  header 'Server options:'
+
+  option :host do
+    d = "0.0.0.0"
+    short '-h'
+    long '--host=HOST'
+    desc "The hostname or ip of the host to bind to (default #{d})"
+    default d
+  end
+
+  option :port do
+    d = 4567
+    short '-p'
+    long '--port=PORT'
+    desc "The port to listen on (default #{d})"
+    cast Integer
+    default d
+  end
+
+  option :branch do
+    d = 'master'
+    short '-b'
+    long '--branch=BRANCH'
+    desc "The branch to test (default #{d})"
+    default d
+  end
+
+  option :command do
+    d = 'rake'
+    short '-c'
+    long '--command=COMMAND'
+    desc "The test command (default #{d})"
+    default d
+  end
+
+  option :interval do
+    d = 60
+    short '-i'
+    long '--interval=INTERVAL'
+    desc "The interval to check update (default #{d})"
+    cast Integer
+    default d
+  end
+
+  separator ''
+  separator 'Common options: '
+
+  option :help do
+    long '--help'
+    desc 'Show this message'
+  end
+
+  option :version do
+    short '-v'
+    long '--version'
+    desc 'Show version'
+    action do
+      puts "#{File.basename(__FILE__)} v#{CIJoe::Version}"
+      exit
+    end
+  end
+end
+
+options = Choice.choices
+
+Tester::Runner.start(
+  :branch => options[:branch],
+  :test_command => options[:command],
+  :interval => options[:interval]
+)
+
+Tester::Server.run!(
+  :host => options[:host],
+  :port => options[:port]
+)

@@ -1,0 +1,12 @@
+%a{:href => '/'} « logs
+
+%h2= @hash
+
+-if @log[:status] == 0
+  %h3.success Success!
+- else
+  %h3.failure Failure!
+
+= @log[:created_at]
+
+%pre= @log[:output]

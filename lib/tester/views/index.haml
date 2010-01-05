@@ -1,0 +1,12 @@
+%table
+  - @logs.each do |log|
+    %tr
+      %td
+        %a{:href => "/logs/#{log[:hash]}"}= log[:hash]
+      %td
+        -if log[:status] == 0
+          .success Success!
+        - else
+          .failure Failure!
+      %td
+        = log[:created_at]

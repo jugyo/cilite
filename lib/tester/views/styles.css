@@ -1,0 +1,35 @@
+body {
+  font-family: Verdana, Helvetica;
+  font-size: 13.0px;
+  margin: 0;
+  padding: 0;
+  background: url(/background.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  color: gray; }
+
+pre {
+  color: white;
+  background-color: black;
+  border: solid 1px gray;
+  overflow: auto; }
+
+td {
+  padding: 4px;
+  border-right: solid 1px silver;
+  border-bottom: dashed 1px silver; }
+
+#wrap {
+  margin: 20px; }
+
+
+#footer {
+  text-align: right; }
+
+.success {
+  font-weight: bold;
+  color: green; }
+
+.failure {
+  font-weight: bold;
+  color: red; }
