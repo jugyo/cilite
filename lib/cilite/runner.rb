@@ -40,11 +40,11 @@ module CiLite
     end
 
     def test(hash)
-      process = Process.new(config[:test_command])
-      process.start
-      puts "#{hash} => #{process.status}"
-      puts process.output
-      Log[hash] = process.to_hash.merge(
+      build = Build.new(config[:test_command])
+      build.start
+      puts "#{hash} => #{build.status}"
+      puts build.output
+      Log[hash] = build.to_hash.merge(
                     :hash => hash,
                     :created_at => Time.now,
                     :branch => config[:branch]

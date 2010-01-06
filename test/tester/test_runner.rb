@@ -11,12 +11,12 @@ class TestRunner < Test::Unit::TestCase
     end
 
     should 'test if updated' do
-      test_process_stub = Object.new
-      mock(test_process_stub).start
-      stub(test_process_stub).to_hash { {:foo => :bar} }
-      stub(test_process_stub).status { 0 }
-      stub(test_process_stub).output { 'output' }
-      mock(CiLite::Process).new(@runner.config[:test_command]) { test_process_stub }
+      test_build_stub = Object.new
+      mock(test_build_stub).start
+      stub(test_build_stub).to_hash { {:foo => :bar} }
+      stub(test_build_stub).status { 0 }
+      stub(test_build_stub).output { 'output' }
+      mock(CiLite::Build).new(@runner.config[:test_command]) { test_build_stub }
       mock(CiLite::Log).[]=.with_any_args
       stub(Time).now { 'now' }
 

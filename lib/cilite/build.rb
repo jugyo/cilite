@@ -1,5 +1,5 @@
 module CiLite
-  class Process < Struct.new(:status, :pid)
+  class Build < Struct.new(:status, :pid)
     attr_reader :command, :status, :pid, :output
 
     def initialize(command)
