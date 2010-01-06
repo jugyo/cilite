@@ -19,7 +19,7 @@ module CiLite
           begin
             test_if_updated
           rescue Exception => e
-            puts "#{e.message}\n  #{e.backtrace.join("\n  ")}"
+            puts "<red>#{e.message}</red>".termcolor
           ensure
             sleep config[:interval]
           end
@@ -40,7 +40,7 @@ module CiLite
     end
 
     def test(hash)
-      puts "<magenta>start: #{hash}</magenta>".termcolor, config[:test_command]
+      puts "start: #{hash}", config[:test_command]
 
       build = Build.new(config[:test_command])
       build.start
