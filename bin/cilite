@@ -76,7 +76,7 @@ options = Choice.choices
 
 CiLite::Runner.start(
   :branch => options[:branch],
-  :test_command => options[:command],
+  :command => options[:command],
   :interval => options[:interval]
 )
 

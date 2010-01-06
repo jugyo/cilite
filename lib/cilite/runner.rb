@@ -4,12 +4,14 @@ module CiLite
       self.new(options).start
     end
 
-    attr_reader :config, :checker
-    attr_accessor :testing, :started
+    attr_reader :branch, :command, :interval
+    attr_accessor :started
 
     def initialize(options)
-      @config = (KVS['config'] || {}).merge(options)
-      @checker = Checker.new(@config[:branch])
+      options = (KVS['config'] || {}).merge(options)
+      @branch = options[:branch]
+      @command = options[:command]
+      @interval = options[:interval]
     end
 
     def start
@@ -19,9 +21,9 @@ module CiLite
           begin
             test_if_updated
           rescue Exception => e
-            puts "<red>#{e.message}</red>".termcolor
+            puts "<red>#{TermColor.escape(e.to_s)}</red>".termcolor
           ensure
-            sleep config[:interval]
+            sleep interval
           end
         end
       end
@@ -29,25 +31,31 @@ module CiLite
     end
 
     def test_if_updated
-      checker.if_updated do |hash|
-        begin
-          self.testing = true
-          test(hash)
-        ensure
-          self.testing = false
-        end
+      hash = git_update
+      unless KVS[hash]
+        test(hash)
+      end
+    end
+
+    def git_update
+      if system("git fetch origin && git reset --hard origin/#{branch}")
+        hash = `git rev-parse origin/#{branch}`.chomp
+        raise "failed to get HEAD commit of origin/#{branch}" unless $? == 0
+        hash
+      else
+        raise "failed to update origin/#{branch}"
       end
     end
 
     def test(hash)
-      puts "start: #{hash}", config[:test_command]
+      puts "start: #{hash}", command
 
-      build = Build.new(config[:test_command])
+      build = Build.new(command)
       build.start
       Log[hash] = build.to_hash.merge(
                     :hash => hash,
                     :created_at => Time.now,
-                    :branch => config[:branch]
+                    :branch => branch
                   )
 
       output_result(hash, build)
