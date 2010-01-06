@@ -16,6 +16,7 @@ class TestRunner < Test::Unit::TestCase
       stub(test_build_stub).to_hash { {:foo => :bar} }
       stub(test_build_stub).status { 0 }
       stub(test_build_stub).output { 'output' }
+      stub(test_build_stub).success? { true }
       mock(CiLite::Build).new(@runner.config[:test_command]) { test_build_stub }
       mock(CiLite::Log).[]=.with_any_args
       stub(Time).now { 'now' }

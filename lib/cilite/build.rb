@@ -13,6 +13,11 @@ module CiLite
       end
       @status = $?.exitstatus.to_i
     rescue Exception => e
+      @status = -1
+    end
+
+    def success?
+      status == 0
     end
 
     def to_hash

@@ -15,6 +15,7 @@ begin
     gem.add_dependency 'kvs'
     gem.add_dependency 'sinatra'
     gem.add_dependency 'choice'
+    gem.add_dependency 'termcolor', '>= 1.2.0'
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"

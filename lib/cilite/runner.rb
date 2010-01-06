@@ -40,15 +40,26 @@ module CiLite
     end
 
     def test(hash)
+      puts "<magenta>start: #{hash}</magenta>".termcolor, config[:test_command]
+
       build = Build.new(config[:test_command])
       build.start
-      puts "#{hash} => #{build.status}"
-      puts build.output
       Log[hash] = build.to_hash.merge(
                     :hash => hash,
                     :created_at => Time.now,
                     :branch => config[:branch]
                   )
+
+      output_result(hash, build)
+    end
+
+    def output_result(hash, build)
+      puts build.output
+      if build.success?
+        puts "<green>[Success!] #{hash}</green>".termcolor
+      else
+        puts "<red>[Failure!] #{hash}</red>".termcolor
+      end
     end
   end
 end
