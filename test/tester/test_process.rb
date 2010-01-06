@@ -1,10 +1,10 @@
 require 'helper'
 require 'tmpdir'
 
-class TestTestProcess < Test::Unit::TestCase
+class TestProcess < Test::Unit::TestCase
   context 'main' do
     setup do
-      @test = CiLite::TestProcess.new('foo')
+      @test = CiLite::Process.new('foo')
     end
 
     should 'pass the test' do

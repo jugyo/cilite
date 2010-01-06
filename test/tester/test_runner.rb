@@ -16,7 +16,7 @@ class TestRunner < Test::Unit::TestCase
       stub(test_process_stub).to_hash { {:foo => :bar} }
       stub(test_process_stub).status { 0 }
       stub(test_process_stub).output { 'output' }
-      mock(CiLite::TestProcess).new(@runner.config[:test_command]) { test_process_stub }
+      mock(CiLite::Process).new(@runner.config[:test_command]) { test_process_stub }
       mock(CiLite::Log).[]=.with_any_args
       stub(Time).now { 'now' }
 

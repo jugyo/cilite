@@ -40,7 +40,7 @@ module CiLite
     end
 
     def test(hash)
-      process = TestProcess.new(config[:test_command])
+      process = Process.new(config[:test_command])
       process.start
       puts "#{hash} => #{process.status}"
       puts process.output
