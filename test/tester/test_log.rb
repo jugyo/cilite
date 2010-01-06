@@ -8,12 +8,12 @@ class TestLog < Test::Unit::TestCase
     end
 
     should 'save log' do
-      Tester::Log['test1'] = {:foo => :bar}
-      assert_equal(['test1'], Tester::Log.logs)
-      assert_equal({:foo => :bar}, Tester::Log['test1'])
-      Tester::Log['test2'] = {:FOO => :BAR}
-      assert_equal(['test1', 'test2'], Tester::Log.logs)
-      assert_equal({:FOO => :BAR}, Tester::Log['test2'])
+      CiLite::Log['test1'] = {:foo => :bar}
+      assert_equal(['test1'], CiLite::Log.logs)
+      assert_equal({:foo => :bar}, CiLite::Log['test1'])
+      CiLite::Log['test2'] = {:FOO => :BAR}
+      assert_equal(['test1', 'test2'], CiLite::Log.logs)
+      assert_equal({:FOO => :BAR}, CiLite::Log['test2'])
     end
   end
 end

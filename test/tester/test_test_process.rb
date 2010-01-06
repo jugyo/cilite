@@ -4,7 +4,7 @@ require 'tmpdir'
 class TestTestProcess < Test::Unit::TestCase
   context 'main' do
     setup do
-      @test = Tester::TestProcess.new('foo')
+      @test = CiLite::TestProcess.new('foo')
     end
 
     should 'pass the test' do

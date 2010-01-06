@@ -1,4 +1,4 @@
-module Tester
+module CiLite
   module Log
     class << self
       def []=(hash, result)

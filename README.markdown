@@ -1,4 +1,4 @@
-Tester
+CiLite
 ======
 
 Continuation testing tool.
@@ -9,18 +9,18 @@ Usage
 run:
 
     % cd your_git_repository
-    % tester
+    % cilite
 
 and open http://localhost:4567/
 
 help:
 
-    % tester -h
+    % cilite -h
 
 Installation
 ------
 
-    gem install tester
+    gem install cilite
 
 Copyright
 ------

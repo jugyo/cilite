@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "tester"
+    gem.name = "cilite"
     gem.summary = %Q{Continuation testing tool.}
     gem.description = %Q{Continuation testing tool for project that use git.}
     gem.email = "jugyo.org@gmail.com"
-    gem.homepage = "http://github.com/jugyo/tester"
+    gem.homepage = "http://github.com/jugyo/cilite"
     gem.authors = ["jugyo"]
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
@@ -49,7 +49,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "tester #{version}"
+  rdoc.title = "cilite #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

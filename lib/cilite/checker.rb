@@ -1,4 +1,4 @@
-module Tester
+module CiLite
   class Checker
     attr_reader :branch
     attr_accessor :last_hash

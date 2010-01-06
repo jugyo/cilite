@@ -1,4 +1,4 @@
-module Tester
+module CiLite
   class Runner
     def self.start(options)
       self.new(options).start

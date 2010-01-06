@@ -6,7 +6,7 @@ class TestChecker < Test::Unit::TestCase
     setup do
       KVS.dir = 'foo'
       KVS['HEAD'] = ''
-      @checker = Tester::Checker.new('master')
+      @checker = CiLite::Checker.new('master')
       stub(@checker).update
     end
 

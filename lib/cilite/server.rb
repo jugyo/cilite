@@ -1,4 +1,4 @@
-module Tester
+module CiLite
   class Server < Sinatra::Base
     dir = File.dirname(File.expand_path(__FILE__))
 

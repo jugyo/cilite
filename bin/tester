@@ -3,7 +3,7 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-require 'tester'
+require 'cilite'
 require 'choice'
 
 Choice.options do
@@ -74,13 +74,13 @@ end
 
 options = Choice.choices
 
-Tester::Runner.start(
+CiLite::Runner.start(
   :branch => options[:branch],
   :test_command => options[:command],
   :interval => options[:interval]
 )
 
-Tester::Server.run!(
+CiLite::Server.run!(
   :host => options[:host],
   :port => options[:port]
 )
