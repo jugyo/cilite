@@ -17,11 +17,15 @@ module CiLite
     end
 
     def update
-      `git fetch origin && git reset --hard origin/#{branch}`
+      unless system("git fetch origin && git reset --hard origin/#{branch}")
+        raise "failed to update origin/#{branch}"
+      end
     end
 
     def head
-      `git rev-parse origin/#{branch}`.chomp
+      hash = `git rev-parse origin/#{branch}`.chomp
+      raise "failed to get HEAD commit of origin/#{branch}" unless $? == 0
+      hash
     end
   end
 end
