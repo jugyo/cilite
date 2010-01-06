@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "cilite"
-    gem.summary = %Q{Continuation testing tool.}
-    gem.description = %Q{Continuation testing tool for project that use git.}
+    gem.summary = %Q{CiLite is lite CI tool.}
+    gem.description = %Q{CiLite is lite CI tool for project that use git.}
     gem.email = "jugyo.org@gmail.com"
     gem.homepage = "http://github.com/jugyo/cilite"
     gem.authors = ["jugyo"]

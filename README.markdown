@@ -1,7 +1,7 @@
 CiLite
 ======
 
-Continuation testing tool.
+CiLite is lite CI tool.
 
 Usage
 ------
