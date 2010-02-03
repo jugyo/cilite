@@ -3,7 +3,6 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-require 'cilite'
 require 'choice'
 
 Choice.options do
@@ -73,6 +72,14 @@ Choice.options do
 end
 
 options = Choice.choices
+
+if Choice.rest[0]
+  Dir.chdir(Choice.rest[0])
+end
+
+puts "Project directory is `#{Dir.pwd}`"
+
+require 'cilite'
 
 CiLite::Runner.start(
   :branch => options[:branch],
