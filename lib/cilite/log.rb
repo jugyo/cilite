@@ -2,16 +2,16 @@ module CiLite
   module Log
     class << self
       def []=(hash, result)
-        KVS['logs'] = logs << hash
-        KVS[hash] = result
+        YKK['logs'] = logs << hash
+        YKK[hash] = result
       end
 
       def [](hash)
-        KVS[hash]
+        YKK[hash]
       end
 
       def logs
-        KVS['logs'] || []
+        YKK['logs'] || []
       end
     end
   end

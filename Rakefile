@@ -12,7 +12,7 @@ begin
     gem.authors = ["jugyo"]
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
-    gem.add_dependency 'kvs'
+    gem.add_dependency 'ykk'
     gem.add_dependency 'sinatra'
     gem.add_dependency 'choice'
     gem.add_dependency 'termcolor', '>= 1.2.0'

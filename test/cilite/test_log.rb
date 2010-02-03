@@ -4,7 +4,7 @@ require 'fakefs'
 class TestLog < Test::Unit::TestCase
   context 'main' do
     setup do
-      KVS.dir = 'foo'
+      YKK.dir = 'foo'
     end
 
     should 'save log' do

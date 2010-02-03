@@ -8,7 +8,7 @@ module CiLite
     attr_accessor :started
 
     def initialize(options)
-      options = (KVS['config'] || {}).merge(options)
+      options = (YKK['config'] || {}).merge(options)
       @branch = options[:branch]
       @command = options[:command]
       @interval = options[:interval]
@@ -32,7 +32,7 @@ module CiLite
 
     def test_if_updated
       hash = git_update
-      unless KVS[hash]
+      unless YKK.key?(hash)
         test(hash)
       end
     end

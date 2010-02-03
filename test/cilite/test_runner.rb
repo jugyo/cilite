@@ -23,7 +23,7 @@ class TestRunner < Test::Unit::TestCase
     end
 
     should 'not test if not updated' do
-      KVS['foo'] = 'bar'
+      YKK['foo'] = 'bar'
       stub(@runner).git_update { 'foo' }
       mock(@runner).test('foo').times(0)
       @runner.test_if_updated
