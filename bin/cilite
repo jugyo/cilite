@@ -59,16 +59,6 @@ Choice.options do
     long '--help'
     desc 'Show this message'
   end
-
-  option :version do
-    short '-v'
-    long '--version'
-    desc 'Show version'
-    action do
-      puts "#{File.basename(__FILE__)} v#{CIJoe::Version}"
-      exit
-    end
-  end
 end
 
 options = Choice.choices
