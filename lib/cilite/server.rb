@@ -2,8 +2,8 @@ module CiLite
   class Server < Sinatra::Base
     dir = File.dirname(File.expand_path(__FILE__))
 
-    set :views,  "#{dir}/views"
-    set :public, "#{dir}/public"
+    set :views,         "#{dir}/views"
+    set :public_folder, "#{dir}/public"
     set :static, true
 
     get '/' do
